@@ -1,3 +1,8 @@
 language: "ja-JP"
+path_filters:
+  - "**"
+  - "!**/*.key"
+  - "!.gnupg/**"
 reviews:
-  poem: false
+  summary:
+    poem: false
