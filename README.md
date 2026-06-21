@@ -10,11 +10,11 @@
 
 Docker image that give `gpg` command.
 
-_Please contact me anytime if you have a problem or request! My information is posted at the bottom of this document._
+*Please contact me anytime if you have a problem or request! My information is posted at the bottom of this document.*
 
 ## Requirements
 
-- [Docker](https://www.docker.com/)
+* [Docker](https://www.docker.com/)
 
 ## Installation
 
@@ -45,9 +45,9 @@ gpg -o text.txt --decrypt text.txt.gpg
 
 ## Relase Note
 
-| date       | version | note           |
-| ---------- | ------- | -------------- |
-| 2020-05-14 | 0.1     | first release. |
+|date      |version|note          |
+|---       |---    |---           |
+|2020-05-14|0.1    |first release.|
 
 ## License
 
@@ -63,7 +63,7 @@ File a [Github issue](https://github.com/genzouw/gpg/issues), send an email to [
 
 [genzouw](https://genzouw.com)
 
-- Twitter : @genzouw ( https://twitter.com/genzouw )
-- Facebook : genzouw ( https://www.facebook.com/genzouw )
-- LinkedIn : genzouw ( https://www.linkedin.com/in/genzouw/ )
-- Gmail : genzouw@gmail.com
+* Twitter   : @genzouw ( https://twitter.com/genzouw )
+* Facebook  : genzouw ( https://www.facebook.com/genzouw )
+* LinkedIn  : genzouw ( https://www.linkedin.com/in/genzouw/ )
+* Gmail     : genzouw@gmail.com
