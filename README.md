@@ -4,7 +4,6 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/genzouw/gpg.svg?style=for-the-badge)](https://hub.docker.com/r/genzouw/gpg/)
 [![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/genzouw/gpg.svg?style=for-the-badge)](https://hub.docker.com/r/genzouw/gpg/)
 
-
 [![dockeri.co](https://dockeri.co/image/genzouw/gpg)](https://hub.docker.com/r/genzouw/gpg)
 
 ## Description
@@ -13,16 +12,13 @@ Docker image that give `gpg` command.
 
 *Please contact me anytime if you have a problem or request! My information is posted at the bottom of this document.*
 
-
 ## Requirements
 
 * [Docker](https://www.docker.com/)
 
-
 ## Installation
 
 **You do not need to install !**
-
 
 ## Usage
 
@@ -53,11 +49,9 @@ gpg -o text.txt --decrypt text.txt.gpg
 |---       |---    |---           |
 |2020-05-14|0.1    |first release.|
 
-
 ## License
 
 This software is released under the MIT License, see LICENSE.
-
 
 ## Help
 
