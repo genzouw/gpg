@@ -4,25 +4,21 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/genzouw/gpg.svg?style=for-the-badge)](https://hub.docker.com/r/genzouw/gpg/)
 [![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/genzouw/gpg.svg?style=for-the-badge)](https://hub.docker.com/r/genzouw/gpg/)
 
-
 [![dockeri.co](https://dockeri.co/image/genzouw/gpg)](https://hub.docker.com/r/genzouw/gpg)
 
 ## Description
 
 Docker image that give `gpg` command.
 
-*Please contact me anytime if you have a problem or request! My information is posted at the bottom of this document.*
-
+_Please contact me anytime if you have a problem or request! My information is posted at the bottom of this document._
 
 ## Requirements
 
-* [Docker](https://www.docker.com/)
-
+- [Docker](https://www.docker.com/)
 
 ## Installation
 
 **You do not need to install !**
-
 
 ## Usage
 
@@ -49,15 +45,13 @@ gpg -o text.txt --decrypt text.txt.gpg
 
 ## Relase Note
 
-|date      |version|note          |
-|---       |---    |---           |
-|2020-05-14|0.1    |first release.|
-
+| date       | version | note           |
+| ---------- | ------- | -------------- |
+| 2020-05-14 | 0.1     | first release. |
 
 ## License
 
 This software is released under the MIT License, see LICENSE.
-
 
 ## Help
 
@@ -69,7 +63,7 @@ File a [Github issue](https://github.com/genzouw/gpg/issues), send an email to [
 
 [genzouw](https://genzouw.com)
 
-* Twitter   : @genzouw ( https://twitter.com/genzouw )
-* Facebook  : genzouw ( https://www.facebook.com/genzouw )
-* LinkedIn  : genzouw ( https://www.linkedin.com/in/genzouw/ )
-* Gmail     : genzouw@gmail.com
+- Twitter : @genzouw ( https://twitter.com/genzouw )
+- Facebook : genzouw ( https://www.facebook.com/genzouw )
+- LinkedIn : genzouw ( https://www.linkedin.com/in/genzouw/ )
+- Gmail : genzouw@gmail.com
