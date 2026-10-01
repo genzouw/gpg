@@ -7,7 +7,6 @@
   "semanticCommits": "enabled",
   "semanticCommitScope": "deps",
   "timezone": "Asia/Tokyo",
-  "minimumReleaseAgee": "3 days",
   "schedule": [
     "before 9am"
   ],
