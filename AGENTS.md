@@ -63,12 +63,54 @@
 `ANTHROPIC_API_KEY` / `GEMINI_API_KEY` などを自分のシェルの環境変数として `export` して使うことは **MAY** です。
 一方、同じ鍵を GitHub Secrets へ登録し CI から参照することは **MUST NOT** です。
 
+### 1.5 CI による自動検出範囲
+
+`.github/workflows/free-policy.yml` (実体は [`genzouw/ci-workflows`](https://github.com/genzouw/ci-workflows) の reusable workflow) が、本ポリシーのうち構文的に判定できる違反を検出します。違反を検出すると job が失敗します (`enforce: true`)。
+
+走査対象は次のファイルです。
+
+- `.github/` 配下の YAML / JSON (ワークフロー、`.github/renovate.json` など)
+- リポジトリルート直下の Renovate 設定 (`renovate.json` / `renovate.json5` / `.renovaterc` / `.renovaterc.json` / `.renovaterc.json5`)
+- composite action 定義 (`action.yml` / `action.yaml`)
+
+**CI が自動検出するもの**
+
+| 検出内容                                                                                                 | 対応する MUST NOT                      |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| `GITHUB_TOKEN` 以外の `secrets.*` 参照、および `secrets: inherit`                                        | LLM / 従量課金 API キーの Secrets 登録 |
+| 従量課金 API キーを示す変数名 (`*_API_KEY` / `*_API_TOKEN` / `*_SECRET_KEY` / プロバイダ名付きの鍵・URL) | 同上 (`vars.*` や平文での指定も含む)   |
+| 課金可能な LLM / 検索 API のエンドポイントホスト名                                                       | OpenAI 互換エンドポイント経由での利用  |
+
+`secrets.*` は許可リスト方式です。本リポジトリは `GITHUB_TOKEN` 以外の Secrets を使っていないため、**`GITHUB_TOKEN` 以外の参照はすべて違反として検出** されます。
+
+**例外の追加には 5 節の事前承認が MUST です**
+
+`free-policy` は失敗時に、除外の方法として次の 2 つを案内します。
+
+- 対象行に `free-policy: allow <理由>` を含むコメントを書く
+- `.github/workflows/free-policy.yml` の `allowed_secrets` に Secret 名を追加する
+
+どちらも本ポリシーの例外にあたります。CI はマーカーや `allowed_secrets` に承認があるかを検査しないため、CI の案内に従って自己判断で追加することは **MUST NOT** です。追加する場合は、PR を作成する **前に** 5 節の例外申請プロセスでオーナーの承認を得て、承認済み Issue の URL を PR 本文に **MUST** 明記してください。誤検知だと判断した場合も同じ手順を取ります。
+
+**CI が自動検出しないもの (レビューで判断します)**
+
+- 走査対象の外にあるファイル (ルート直下の `.coderabbit.yaml`、`Dockerfile`、`.github/` の外にあるスクリプトなど)
+- 有料プラン / 有料ライセンス / 有料トライアル / クレジットカード登録を必要とするサービスの導入
+- 公開 OSS リポジトリでも Pro プラン以上を要求する SaaS の追加
+- リポジトリオーナーへの新規 Secret 発行依頼
+- そのサービスが「無料枠」型かどうかの判定
+- 既存テスト / lint / セキュリティスキャンのスキップ・無効化
+- 既に導入済みのツールとの機能重複
+
+`free-policy` チェックの成功は、これらの項目を満たしていることを意味しません。PR 本文での説明 (3 節) とレビューでカバーします。
+
 ---
 
 ## 2. PR を作成する前のチェックリスト (MUST すべて満たす)
 
 - [ ] 追加するサービスが「公開 OSS リポジトリで完全無料で利用可能」であることを、**公式の料金ページ / ドキュメントの URL** で証明している。
 - [ ] LLM プロバイダの API キー / 従量課金 API キーを GitHub Secrets に追加していない。`GEMINI_API_KEY` / `OPENAI_API_KEY` / `ANTHROPIC_API_KEY` 等を `secrets.*` から参照する新規の記述が変更差分に含まれていない。
+- [ ] `free-policy` チェックが成功している。`free-policy: allow <理由>` マーカーや `allowed_secrets` を追加した場合は、5 節の承認済み Issue の URL を PR 本文に記載している。
 - [ ] 「無料枠内に収まる前提」の利用ではなく、「課金が一切発生しない構成」であることを PR 本文に明記している。
 - [ ] 追加する GitHub Action は **フルコミット SHA で pin** している。
 - [ ] `.github/workflows/` 配下の既存ワークフローと機能が重複していないことを確認した。
