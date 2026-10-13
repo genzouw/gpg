@@ -91,7 +91,7 @@
 
 `free-policy` は失敗時に、除外の方法として次の 2 つを案内します。
 
-- 対象行に `free-policy: allow <理由>` を含むコメントを書く
+- 対象行に `free-policy: allow <理由>` を含むコメントを書く。ただし、プロバイダ名付きの鍵名や課金可能な API のホスト名を含む行、動的な添字と `secrets` コンテキスト全体の参照は、マーカーを付けても除外されない (条件は [ci-workflows README の「段階導入と例外」](https://github.com/genzouw/ci-workflows#段階導入と例外) を参照)
 - `.github/workflows/free-policy.yml` の `allowed_secrets` に Secret 名を追加する
 
 どちらも本ポリシーの例外にあたります。CI はマーカーや `allowed_secrets` に承認があるかを検査しないため、CI の案内に従って自己判断で追加することは **MUST NOT** です。追加する場合は、PR を作成する **前に** 5 節の例外申請プロセスでオーナーの承認を得て、承認済み Issue の URL を PR 本文に **MUST** 明記してください。誤検知だと判断した場合も同じ手順を取ります。
